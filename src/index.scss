@@ -1,0 +1,17 @@
+
+
+// FONTS
+@import url("./assets/fonts/Montserrat/Montserrat.css");
+@import url("./assets/fonts/BebasNeue/BebasNeue.css");
+
+// NORMALIZE AND RESET STYLES
+@import url("./styles/reset.css");
+
+// IMPORT ALL COMPONENT ROOT STYLES
+@import url("./**/index.scss");
+
+html { 
+  font-size: 62.5%;
+  font-family: Montserrat; 
+  scroll-behavior: smooth;
+}

@@ -1,0 +1,45 @@
+{
+  "name": "cepkoncept",
+  "version": "1.0.0",
+  "description": "Code base for the website of Cepkoncept LTD",
+  "source": "./src/index.html",
+  "scripts": {
+    "clean": "rm -rf ./dist/* && rm -rf ./.parcel-cache/*",
+    "start": "npx parcel watch --no-cache",
+    "serve": "npx live-server --watch=dist --open=./dist/index.html --mount=/:dist/",
+    "build": "parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jeremiah-Olatunde/cepkoncept.git"
+  },
+  "keywords": [
+    "Cepkoncept"
+  ],
+  "contributors": [
+    {
+      "name": "Jesuseun Jeremiah Olatunde",
+      "email": "jesuseun.j.olatunde@gmail.com"
+    },
+    {
+      "name": "Donald Unuose Roman",
+      "email": "romanunuose@gmail.com"
+    }
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jeremiah-Olatunde/cepkoncept/issues"
+  },
+  "homepage": "https://github.com/Jeremiah-Olatunde/cepkoncept#readme",
+  "devDependencies": {
+    "@parcel/config-default": "^2.6.2",
+    "@parcel/resolver-glob": "^2.6.2",
+    "@parcel/transformer-sass": "^2.6.2",
+    "live-server": "^1.2.2",
+    "motion": "^10.12.0",
+    "parcel": "^2.6.2",
+    "posthtml": "^0.16.6",
+    "posthtml-include": "^1.7.4",
+    "posthtml-modules": "^0.9.0"
+  }
+}
