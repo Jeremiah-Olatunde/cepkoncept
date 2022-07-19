@@ -1,0 +1,51 @@
+
+.cepkoncept-navbar {
+
+  padding: 0 4vh;
+  font-weight: 700;
+
+  .navbar-links {
+
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .navbar-link {
+
+      height: 100%;
+      font-size: 1.3rem;
+      padding: 0 5px;
+      text-transform: uppercase;
+
+      display: flex;
+      place-items: center;
+      
+    }
+
+    .logo {
+
+      flex-basis: 50%;
+      font-size: 3.0rem;
+      font-variant: small-caps; 
+      text-transform: capitalize;
+
+      a:first-letter { color: darkgoldenrod; }
+
+    }
+
+    .sidebar > svg { fill: darkgoldenrod; }
+
+    .btn-type-1::before {
+      width: 0;
+      height: 20%;
+      background: #b8870b30;
+    }
+
+    .active::before { width: 40%; }
+
+    .btn-type-1:hover::before { width: 100%; }
+
+  }
+
+}
