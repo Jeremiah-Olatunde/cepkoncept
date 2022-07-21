@@ -1,147 +1,210 @@
+
 "use strict";
 
 import type { AnimationOptionsWithOverrides, AnimationControls } from "motion";
 import { animate } from "motion";
 
 type FocusPosition = "start" | "center" | "end";
+interface SlideshowConfig { duration: number }
 
-export function initializeSlider(
-  sliderId: string, 
-  {position, animOpts}: {position: FocusPosition, animOpts: AnimationOptionsWithOverrides},
-  callback?: ({focus, prev, slider, slideNo}: {
-      slideNo: number,
-      prev: HTMLElement, 
-      focus: HTMLElement, 
-      slider: HTMLElement
-      animCtrls: AnimationControls
-  }) => void
-): void {
-
-  // SET UP AND CONFIGURE SLIDER
-
-  const slider = document.querySelector(`[data-slider=${sliderId}]`);
-
-  if(!(slider instanceof HTMLElement)) 
-    throw new Error("Slider not found | Slider not a HTMLElement");
-
-  // SET REQUIRED STYLES
-
-  slider.style.overflow = "hidden";
-  slider.style.position = "relative";
-
-  const { wrapper } = components(slider);
-  wrapper.style.display = "flex";
-  wrapper.style.position = "absolute";
-
-  // ADJUST POSITION OF SLIDES WHEN SLIDER DIMENSION CHANGES'
-  const observer = new ResizeObserver(_ => slide(slider, position, animOpts));
-  Array.from(wrapper.children).forEach(slide => observer.observe(slide));
-  observer.observe(slider);
-  
-
-  document.querySelector(`[data-left=${sliderId}]`)?.addEventListener("click", () => {
-    const {prev, focus} = updateFocus(slider, -1);
-    const animCtrls = slide(slider, position, animOpts);
-    callback?.({focus, prev, slider, animCtrls, slideNo: slideNo(slider)});
-  })
-
-  document.querySelector(`[data-right=${sliderId}]`)?.addEventListener("click", () => {
-    const {prev, focus} = updateFocus(slider, 1);
-    const animCtrls = slide(slider, position, animOpts);
-    callback?.({focus, prev, slider, animCtrls, slideNo: slideNo(slider)});
-  })
-
+interface SliderEvent {
+  slideNo: number,
+  prev: HTMLElement,
+  focus: HTMLElement,
+  slider: HTMLElement,
+  animCtrls: AnimationControls
 }
 
-function slide(
-  slider: HTMLElement, 
-  position: 
-  FocusPosition, animOpts: AnimationOptionsWithOverrides
-): AnimationControls {
+export class Slider {
 
-  // ANIMATE THE SLIDE IN FOCUS TO IT'S APPROPRIATE POSITION
+  private slider: HTMLElement;
+  private wrapper: HTMLElement;
+  private focus: HTMLElement;
 
-  return animate(
-    components(slider).wrapper, 
-    {x: computeOffset(slider, computeFocusPoint(slider, position))}, 
-    animOpts
-  );
+  private focusPosition: FocusPosition;
+  private animConfig: AnimationOptionsWithOverrides;
+  private slideshowConfig: SlideshowConfig | undefined;
 
-}
+  private slideshowTimer: number = 0;
+  private listeners: ((event: SliderEvent) => void)[] = [];
 
-function updateFocus(
-  slider: HTMLElement, 
-  direction: -1 | 1
-): { prev: HTMLElement, focus: HTMLElement} {
+  private playState: "pause" | "play" = "pause";
+  private inView: boolean = false;
 
-  // CHANGES THE SLIDE IN FOCUS CARD BY TOGGLING THE data-focus ATTRIBUTE ON SLIDE ELEMENTS
-  // -1 CHANGES SLIDE IN FOCUS TO THE PREVIOUS SIBLING (LEFT) 
-  // +1 CHANGES SLIDE IN FOCUS TO THE NEXT SIBLING (RIGHT)
-  // RETURNS THE PREVIOUS AND CURRENT FOCUS SLIDES
+  constructor(
+    private sliderId: string, 
+    { focusPosition, animConfig, slideshowConfig }: { 
+      focusPosition: FocusPosition,
+      slideshowConfig?: SlideshowConfig,
+      animConfig: AnimationOptionsWithOverrides, 
+    }
+   ){
 
-  const { focus } = components(slider);
-  const next = direction < 0 ? focus?.previousElementSibling : focus?.nextElementSibling;
+    const { slider, wrapper, focus } = this.initializeSlider(sliderId);
 
-  if(!(next instanceof HTMLElement)) return { prev: focus, focus: focus};
+    this.slider = slider;
+    this.wrapper = wrapper;
+    this.focus = focus;
 
-  focus.toggleAttribute("data-focus");
-  next.toggleAttribute("data-focus");
+    this.animConfig = animConfig;
+    this.focusPosition = focusPosition;
+    this.slideshowConfig = slideshowConfig;
 
-  return { prev: focus, focus: next }
+    this.initializeListeners();
+    this.initializeObservers();
 
-}
-
-function computeFocusPoint(
-  slider: HTMLElement, 
-  postion: FocusPosition
-): number {
-
-  // CALCULATES THE COORDINATES OF THE SLIDE IN FOCUS BASED ON CHOSEN POSITION IN THE SLIDER
-
-  const { focus } = components(slider);
-
-  switch(postion){
-    case "start": return 0;
-    case "center": return (slider.offsetWidth - focus.offsetWidth)/2;
-    case "end": return slider.offsetWidth - focus.offsetWidth;
   }
 
-}
+  private initializeSlider(sliderId: string): { slider: HTMLElement, wrapper: HTMLElement, focus: HTMLElement} {
 
-function computeOffset(
-  slider: HTMLElement,
-  targetPoint: number
-): number {
+    // RETRIEVE SLIDER COMPONENTS FROM THE DOM 
+    
+    const slider = document.querySelector(`[data-slider=${sliderId}]`);
+    const wrapper = slider?.querySelector(`[data-wrapper]`);
+    const focus = wrapper?.querySelector(`[data-focus]`);
 
-  // RETURNS THE DISPLACEMENT OF THE SLIDE IN FOCUS FROM IT'S DESIRED POSITION
+    if(!(focus instanceof HTMLElement)) throw new Error("Focus not specified");
+    if(!(wrapper instanceof HTMLElement)) throw new Error("Wrapper not specified");
+    if(!(slider instanceof HTMLElement)) throw new Error("Slider not a HTMLElement");
 
-  const { focus, wrapper } = components(slider);
-  return targetPoint - focus.offsetLeft - wrapper.offsetLeft;
+    // SET REQUIRED STYLES
+    slider.style.overflow = "hidden";
+    slider.style.position = "relative";
 
-}
+    wrapper.style.display = "flex";
+    wrapper.style.position = "absolute"; 
 
-function components(slider: HTMLElement): { focus: HTMLElement, wrapper: HTMLElement } {
+    return { slider, wrapper, focus };
 
-  // ENSURES THE TYPE AND EXIXSTENCE OF THE WRAPPER AND FOCUC SLIDE OF A SLIDER
-  // RETURNS THE WRAPPER AND FOCUS SLIDE OF A SLIDER
-  // PERFORMS TYPE NARROWING
-  // TODO: CACHE WRAPPER AND FOCUS ELEMENTS TO MAKE REPEATED CALLED MORE EFFICENT
+  }
 
-  const wrapper = slider.querySelector("[data-wrapper]");
-  const focus = slider.querySelector("[data-focus]");
+  private initializeListeners(): void {
 
-  if(!(focus instanceof HTMLElement)) throw new Error("Focus not specified");
-  if(!(wrapper instanceof HTMLElement)) throw new Error("Wrapper not specified");
+    const left = document.querySelector(`[data-left=${this.sliderId}]`);
+    const right = document.querySelector(`[data-right=${this.sliderId}]`);
 
-  return { wrapper, focus }
+    left?.addEventListener("click", () => {
+      this.jumpToSlide(this.currentSlideNo() - 1);
+      this.move();
+    })
 
-}
+    right?.addEventListener("click", () => {
+      this.jumpToSlide(this.currentSlideNo() + 1);
+      this.move();
+    })
 
-function slideNo(slider: HTMLElement): number {
+  }
 
-  // RETURNS THE SLIDE NUMBER OF THE SLIDE IN FOCUS
+  private initializeObservers(): void {
 
-  const { wrapper, focus } = components(slider);
-  return Array.from(wrapper.children).findIndex(item => item === focus);
+    const resize = new ResizeObserver(_ => this.move());
+    resize.observe(this.slider);
+    Array.from(this.wrapper.children).forEach(slide => resize.observe(slide));
 
+    const intersection = new IntersectionObserver((entries) => {
+
+      this.inView = entries[0].isIntersecting;
+      if(this.inView && this.playState == "play") this.beginSlideshow();
+      else this.endSlideshow();
+
+    }, { threshold: 1 });
+
+    intersection.observe(this.slider);
+
+  }
+
+  private move(): AnimationControls {
+
+    // ANIMATE THE SLIDE IN FOCUS TO IT'S APPROPRIATE POSITION
+
+    const offset: number = this.computeFocusPoint() - this.focus.offsetLeft - this.wrapper.offsetLeft;
+    return animate( this.wrapper, { x: offset }, this.animConfig );
+
+  }
+
+  private changeFocus(index: number): { prev: HTMLElement, focus: HTMLElement } {
+
+    // DO NOT CHANGE FOCUS IF NEW INDEX OUT OF RANGE
+
+    const prevFocus = this.focus; // STORE CURRENT FOCUS AS PREVIOS FOCUS
+    const newFocus = this.wrapper.children[index]; // GET NEW FOCUS | NULL IF INDEX OUT OF RANGE
+
+    if(!(newFocus instanceof HTMLElement)) // RETURN IF NEW FOCUS IS NULL
+      return { prev: prevFocus, focus: prevFocus };  
+
+    prevFocus.toggleAttribute("data-focus");
+    newFocus.toggleAttribute("data-focus");
+
+    this.focus = newFocus;
+    return { prev: prevFocus, focus: newFocus };
+
+  }
+
+  private computeFocusPoint(): number {
+
+    // CALCULATES THE COORDINATES OF THE SLIDE IN FOCUS BASED ON CHOSEN POSITION IN THE SLIDER
+
+    switch(this.focusPosition){
+      case "start": return 0;
+      case "center": return (this.slider.offsetWidth - this.focus.offsetWidth)/2;
+      case "end": return this.slider.offsetWidth - this.focus.offsetWidth;
+    }    
+
+  }
+
+  public currentSlideNo(): number {
+  
+    return Array.from(this.wrapper.children).findIndex(item => item === this.focus);
+  
+  }
+
+  public jumpToSlide(index: number): void {
+
+    const { prev, focus } = this.changeFocus(index);
+    const animCtrls = this.move();
+    this.listeners.forEach(listener => listener({
+      animCtrls,
+      prev, focus,
+      slider: this.slider,
+      slideNo: this.currentSlideNo(),
+    }));
+
+  }
+
+  private beginSlideshow(): void {
+
+    if(!this.slideshowConfig) return;
+
+    const slideCount: number = this.wrapper.children.length;
+
+    this.slideshowTimer = setInterval(() => {
+      this.jumpToSlide((this.currentSlideNo() + 1) % slideCount);
+    }, this.slideshowConfig.duration * 1000);
+
+  }
+
+  private endSlideshow(): void {
+    if(!this.slideshowConfig) return;
+    clearInterval(this.slideshowTimer);
+  }
+
+  public play(): void {
+
+    this.playState = "play";
+    if(this.inView) this.beginSlideshow();
+
+  }
+
+  public pause(): void {
+    this.playState = "pause";
+    this.endSlideshow();
+  }
+
+  public on(eventName: "transition", listener: (event: SliderEvent) => void){
+   
+    eventName;
+    this.listeners.push(listener);
+
+  }
+  
 }
