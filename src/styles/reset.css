@@ -43,6 +43,11 @@ body {
 a {
   color: black;
   text-decoration: none;
+  cursor: pointer;
+}
+
+li {
+  list-style-type: none;
 }
 
 /* Make images easier to work with */
