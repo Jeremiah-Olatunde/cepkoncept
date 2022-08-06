@@ -5,10 +5,11 @@
 @import url("./assets/fonts/BebasNeue/BebasNeue.css");
 
 // RESET AND GLOBAL STYLES
-@import url("./styles/reset.scss");
 @import url("./styles/reusables.scss");
 @import url("./styles/variables.scss");
+@import url("./styles/reset.scss");
 @import url("./styles/globals.css");
+
 
 // IMPORT ALL COMPONENT ROOT STYLES
 @import url("./**/index.scss");

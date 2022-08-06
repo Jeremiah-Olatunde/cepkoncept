@@ -1,0 +1,141 @@
+.footer-1 {
+
+  margin-top: 20rem;
+
+  padding: 14rem 3rem;
+  background-color: #1b1b1b;
+  position: relative;
+
+  &:before {
+    content: "";
+    width: 0.2rem;
+    height: 6rem;
+
+    position: absolute;
+    top: -3rem;
+    left: 50%;
+
+    background-color: var(--primary-accent-color);
+  }
+
+  .footer-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+    max-width: 1260px;
+    color: white;
+
+    .socials {
+      display: flex;
+
+      .icon-link {
+        width: 4.8rem;
+        height: 4.8rem;
+        margin: 0.2rem;
+        border: 0.2rem solid var(--primary-accent-color);
+        border-radius: 50%;
+        
+        position: relative;
+        top: 0;
+
+        fill: white;
+        transition: top 0.3s ease-out;
+
+        &:hover { top: -0.67rem; fill: var(--primary-accent-color); }
+      }
+    }
+  }
+
+  .header {
+    font-size: 3rem;
+    text-transform: capitalize;
+    font-variant: small-caps;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 215px;
+    height: 60px;
+    border: 2px solid var(--primary-accent-color);
+
+    background: linear-gradient(to left, #1b1b1b 50%, var(--primary-accent-color) 50%) right;
+    background-size: 200% 100%;
+    transition: all 0.3s ease-out;
+
+    font-size: 1.7rem;
+    color: white;
+    font-weight: 600;
+
+    &:hover { background-position: left; }
+  }
+
+}
+
+.dummy {
+  height: 500px;
+  width: 500px;
+}
+
+.footer-2 {
+  padding: 4rem 3rem;
+  background-color: #161616;
+
+  .contact-container {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    max-width: 126rem;
+
+    .contact-link {
+      display: block;
+      width: 57rem;
+      height: 5.55rem;
+    }
+
+    .contact { 
+      text-align: center; 
+      color: white; 
+
+      .title {
+        font-size: 2rem;
+        padding-bottom: 10px;
+      }
+
+      .phone-no {
+        font-size: 1.8rem;
+      }
+    }
+  }
+}
+
+.footer-3 {
+  padding: 3rem;
+  background-color: #000;
+  color: #747474;
+
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    max-width: 1260px;
+
+    font-size: 1.4rem;
+
+    .footer-menu {
+      display: flex;
+
+      li {
+        padding-left: 1.2rem;
+      }
+    }
+  }
+}
+
+.dummy {
+  width: 500px;
+  height: 500px;
+}
