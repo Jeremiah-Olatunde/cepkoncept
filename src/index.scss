@@ -5,7 +5,9 @@
 @import url("./assets/fonts/BebasNeue/BebasNeue.css");
 
 // RESET AND GLOBAL STYLES
-@import url("./styles/reset.css");
+@import url("./styles/reset.scss");
+@import url("./styles/reusables.scss");
+@import url("./styles/variables.scss");
 @import url("./styles/globals.css");
 
 // IMPORT ALL COMPONENT ROOT STYLES
@@ -15,4 +17,288 @@ html {
   font-size: 62.5%;
   font-family: Montserrat; 
   scroll-behavior: smooth;
+}
+
+.cepkoncept-about {
+
+  height: 70vh;
+  margin: 35rem 4vh 0 4vh;
+  border: 1px solid black;
+  position: relative;
+
+  display: flex;
+
+  .section-dash {
+    top: -10rem;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    border-bottom: 1px solid var(--primary-accent-color);
+    width: 75px;
+  }
+
+  .content {
+
+    flex-basis: 65%;
+    position: relative;
+
+    .section-header { text-align: center; }
+
+    .paragraph-light { padding: 0 7rem; }
+
+    .about-footer {
+
+      display: flex;
+      justify-content: space-between;
+      padding: 4rem 7rem;
+
+      .socials {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & > :first-child  { margin-left: 0; }
+
+        .encircled-icon { width: 30px; }
+
+      }
+
+      .btn {
+        padding: 0;
+        border: none;
+        background: none;
+        border: 2px solid var(--primary-accent-color);
+
+        height: 50px;
+        aspect-ratio: 43 / 12;
+
+        font-size: 1.4rem;
+        font-weight: 700;
+        text-transform: capitalize;
+        position: relative;
+        transition: color .3s ease-in-out;
+
+
+        &::before {
+          content: "";
+          height: 100%;
+          width: 0;
+          position: absolute;
+          left: 0; top: 0;
+          z-index: -1;
+          background: var(--primary-accent-color);
+          transition: width .3s ease-in-out;
+
+        }
+
+        &:hover {
+          color: white;
+          &::before { width: 100%; }
+        }
+
+      }
+
+    }
+  }
+
+  .image {
+    position: relative;
+    background: var(--primary-accent-color);
+    flex-basis: 35%;
+
+    .border {
+      position: absolute;
+      height: 130%;
+      top: 50%;
+      transform: translateY(-50%);
+      border-right: 2px solid black;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+  }
+
+  --length: 75px;
+
+  .border-dash {
+    position: absolute;
+    border: 2px solid black;
+  }
+
+  .horizontal { width: var(--length); }
+  .vertical { height: var(--length); }
+
+  .top { transform: translate(-4px, -100%); }
+
+  .bottom { bottom: 0; transform: translate(-4px, 100%); }
+
+  .side-top { transform: translate(-100%, -4px); }
+
+  .side-bottom { bottom: 0; transform: translate(-100%, 4px); }
+
+  .foobar-dash {
+    top: 0;
+    left: 50%;
+    height: 50px;
+    transform: translateY(-50%);
+    border: 1px solid var(--primary-accent-color);
+  }
+
+}
+
+.cepkoncept-team {
+
+  height: 90vh;
+  display: flex;
+  margin-top: 20rem;
+
+  .image { flex-basis: 40%; }
+
+  .description {
+    flex-basis: 60%;
+    background: var(--dark-bg-0);
+    padding: 0 7rem;
+    padding-top: 7rem;
+    color: white;
+
+    .section-header {
+      .main-header-light { font-size: 5rem; }
+    }
+
+    .team-footer {
+      display: flex;
+      justify-content: space-between;
+      padding: 5rem 0;
+
+      svg { width: 12.5px; fill: var(--primary-accent-color); }
+
+    }
+
+  }
+
+}
+
+.cepkoncept-projects {
+  padding: 0 5rem;
+
+  .section-header {
+
+    padding: 5rem;
+    text-align: center;
+
+    .dash {
+      height: 50px;
+      margin-bottom: 1rem;
+      display: inline-block;
+      border: 1px solid #fdaf11;
+    }
+
+    text-align: center;
+
+  }
+
+  .projects-slider {
+
+    width: 100%;
+    aspect-ratio: 8 / 3;
+
+    [data-wrapper] { height: 100%; }
+
+    .slide {
+
+      height: 100%;
+      aspect-ratio: 1 / 1.5;
+      position: relative;
+
+      color: white;
+      text-transform: capitalize;
+      // background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img { 
+        z-index: 0;
+        width: calc(100% - 2rem);
+        height: calc(100% - 2rem);
+        position: absolute;
+        object-fit: cover;
+        opacity: .75;
+        transition: opacity .3s ease;
+      }
+
+      .description {
+
+        z-index: 1;
+        position: absolute;
+        max-width: 60%;
+        display: inline-block;
+        bottom: 12.5%; left: 7.5%;
+        transition: bottom .3s ease;
+
+        .name { 
+          font-weight: 600;
+          font-size: 2.75rem;
+          letter-spacing: 0.06rem;
+          line-height: 1.5;
+        }
+
+        .category { 
+          font-size: 1.5rem; 
+          letter-spacing: 0.03rem; 
+          padding-bottom: 1.2rem;
+        }
+
+        .view-project {
+
+          font-weight: 300;
+          font-size: 1.5rem;
+          letter-spacing: 0.03rem;
+
+          position: absolute;
+          display: inline-block;
+
+          padding-bottom: .75rem;
+
+          opacity: 0;
+          bottom: -60%;
+
+          transition: all .3s ease;
+          
+          &::before {
+            content: "";
+            width: 30%;
+            height: 100%;
+            position: absolute;
+            display: inline-block;
+            border-bottom: 2px solid darkgoldenrod;
+            transition: width .3s ease;
+          }
+
+          &:hover::before { width: 100%; }
+
+          a { color: white }
+
+        }
+
+      }
+
+      &:hover {
+        img { opacity: .2; }
+        .description {
+          bottom: 14%;
+          .view-project { opacity: 1; bottom: -37%; }
+        }
+      }
+
+    }
+
+  }
+
 }

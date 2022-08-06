@@ -30,16 +30,14 @@
       font-variant: small-caps; 
       text-transform: capitalize;
 
-      a:first-letter { color: darkgoldenrod; }
+      a:first-letter { color: var(--primary-accent-color); }
 
     }
-
-    .sidebar > svg { fill: darkgoldenrod; }
 
     .btn-type-1::before {
       width: 0;
       height: 20%;
-      background: #b8870b30;
+      background: rgba(0, 0, 0, .085);
     }
 
     .active::before { width: 40%; }

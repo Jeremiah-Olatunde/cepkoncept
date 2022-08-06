@@ -1,0 +1,130 @@
+// SLIDING BACKGROUND BUTTON
+// ----------------------------------------------------------------------------
+.btn-bg-slide {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1;
+  position: relative;
+
+  &::before {
+    content: "";
+
+    left: 0;
+    width: 0;
+    height: 100%;
+
+    z-index: -1;
+    position: absolute;
+    display: inline-block;
+  }
+
+  &:hover::before { width: 100%; }
+}
+// ----------------------------------------------------------------------------
+
+
+// ENCIRCLED ICONS
+// ----------------------------------------------------------------------------
+.encircled-icon {
+  margin: 0 1rem;
+  aspect-ratio: 1 / 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  border: 2px solid var(--primary-accent-color);
+
+  svg { width: 60%; transition: fill .3s; }
+}
+// ----------------------------------------------------------------------------
+
+
+// MAKE IMAGE BACKGROUND OF DIV
+// ----------------------------------------------------------------------------
+
+.image-bg {
+  position: relative;
+  img:first-child {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    position: absolute;
+  }
+}
+// ----------------------------------------------------------------------------
+
+
+// SECTION HEADERS
+// ----------------------------------------------------------------------------
+.section-header {
+  padding: 5rem 0;
+
+  @mixin main-header {
+    font-size: 4rem;
+    padding-bottom: 1rem;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+  }
+
+  .main-header-bold { font-weight: 700; @include main-header; }
+  .main-header-light { font-weight: 300; @include main-header; }
+
+  .sub-header {
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: .5rem;
+    text-transform: uppercase;
+    color: var(--primary-accent-color);
+  }
+}
+// ----------------------------------------------------------------------------
+
+
+// PARAGRAPH STYLING
+// ----------------------------------------------------------------------------
+@mixin paragraph {
+  line-height: 2;
+  font-weight: 400;
+  font-size: 1.5rem;
+  text-align: justify;
+  letter-spacing: .2rem;
+}
+
+.paragraph-light {  color: #707070; @include paragraph; }
+.paragraph-dark {  color: #EBEBEB; @include paragraph; }
+// ----------------------------------------------------------------------------
+
+
+// DASH STYLING
+// ----------------------------------------------------------------------------
+@mixin section-dash {
+  position: absolute;
+  display: inline-block;
+  border-bottom: 3px solid var(--primary-accent-color);
+}
+
+.section-dash-h { width: 7.5rem; }
+.section-dash-v { height: 7.5rem; }
+// ----------------------------------------------------------------------------
+
+
+// PAGINATION
+// ----------------------------------------------------------------------------
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.25rem;
+
+  .page { margin: 1rem; font-weight: 700; }
+  .active { font-size: 140%; color: var(--primary-accent-color); }
+}
+// ----------------------------------------------------------------------------

@@ -1,0 +1,38 @@
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html:focus-within { scroll-behavior: auto; }
+
+
+body, h1, h2, h3, h4, h5, h6, p, 
+figure, blockquote, dl, dd, ul, li {
+  margin: 0; padding: 0;
+}
+
+ul, ol { list-style: none; }
+
+a {
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  font-size: inherit;
+  background: inherit;
+}
+
+img, picture { max-width: 100%; display: block; }
+
+input, button, textarea, select { font: inherit; }
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
