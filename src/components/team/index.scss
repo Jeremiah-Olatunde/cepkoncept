@@ -1,0 +1,33 @@
+.cepkoncept-team {
+
+  height: 90vh;
+  display: flex;
+  margin-top: 20rem;
+
+  .image { flex-basis: 40%; }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-basis: 60%;
+    background: var(--dark-bg-0);
+    padding: 0 7rem;
+    color: white;
+
+    .section-header {
+      .main-header-light { font-size: 5rem; }
+    }
+
+    .team-footer {
+      display: flex;
+      justify-content: space-between;
+      padding: 5rem 0;
+
+      svg { width: 12.5px; fill: var(--primary-accent-color); }
+
+    }
+
+  }
+
+}

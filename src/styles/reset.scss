@@ -12,18 +12,25 @@ figure, blockquote, dl, dd, ul, li {
 ul, ol { list-style: none; }
 
 a {
-  color: black;
+  color: inherit;
   cursor: pointer;
   text-decoration: none;
 }
 
 button {
   border: none;
+  color: inherit;
+  cursor: pointer;
   font-size: inherit;
   background: inherit;
 }
 
-img, picture { max-width: 100%; display: block; }
+img, picture { 
+  display: block; 
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
 
 input, button, textarea, select { font: inherit; }
 

@@ -1,159 +1,147 @@
 .cepkoncept-hero {
+  height: calc(100vh - 78px);
+  padding-top: 60px;
 
-  // margin: 0 4vh 4vh 4vh;
-  height: calc(100vh - 100px);
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, .25), rgba(0, 0, 0, .25)),
+    url("../../assets/images/rocket_launch.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-  border-top: 2px solid var(--primary-accent-color);
-  border-bottom: 2px solid var(--primary-accent-color);
+  display: grid;
+  grid-template-columns: auto 35%;
 
-  .hero-wrapper { 
+  .main {
+    color: white;
+    padding: 0 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-    height: 100%; 
-    position: relative;
-
-    .hero-socials {
-
-      top: 50%;
-      left: 7.5%;
-      position: fixed;
-      transform: translateY(-50%);
-
-      z-index: 2;
-      height: 12.2rem;
-
-
-      display: flex;
-      flex-flow: column nowrap;
-      justify-content: space-between;
-
-      svg { fill: white;  width: 1.7rem; transition: fill .3s;}
-      svg:hover { fill: var(--primary-accent-color); }
-
+    .section-header {
+      padding: 0;
+      .main-header-bold { font-size: 7rem; padding: 0; margin-left: -.4rem;}
+      .sub-header{ padding-bottom: 1rem; }
     }
 
-    .hero-slider {
+    .short-text { 
+      width: 70%; 
+      font-size: 1.2rem; 
+      padding: 2.5rem 0 4rem 0;
+    }
 
-      height: 100%;
+    .btn {
+      color: black;
+      width: 20rem;
+      padding: 2.75rem;
 
-      [data-wrapper] { width: 100%; height: 100%; }
+      font-weight: 800;
+      font-size: 1.75rem;
+      text-transform: uppercase;
 
-      .slide { 
-
+      &::before { 
         width: 100%; 
-        height: 100%; 
-        flex: 0 0 100%;
-
-        padding: 15%;
-
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: center;
-
-        .header {
-            color: white;
-            max-width: 80rem;
-            font-size: 9rem;
-            line-height: 9rem;
-            text-transform: uppercase;
-        }
-
-        .btn-type-1 {
-
-          color: white;
-          font-weight: 700;
-          font-size: 1.5rem;
-          text-transform: uppercase;
-
-          width: 16.5rem;
-          padding: 1.85rem;
-          margin: 2.5rem 0 0 6px;
-
-
-          &::before { background: black; width: 50%; }
-          &:hover::before { width: 100%; }
-
-        }
-
+        background: var(--primary-accent-color); 
       }
-
-      .hero-bg {
-
-        left: 100%;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        position: absolute;
-        background: rgb(0, 0, 0);
-
-        img {
-          width: 100%;
-          opacity: .8;
-          transform: scale(2);
-        }
-
-      }
-
     }
-
-    .hero-cards {
-
-      display: inline-flex;
-      justify-content: space-between;
-
-      top: 80%;
-      left: 50%;
-      width: 70%;
-      transform: translateX(-50%);
-      position: absolute;
-
-      .hero-card {
-
-        width: 32.25%;
-        aspect-ratio: 3 / 3.5;
-        background: black;
-        
-        .hero-card-wrapper { 
-
-          height: 100%;
-          background: white; 
-          border: 1px solid black;
-          transition: transform .2s ease;
-
-          padding: 12.5%;
-
-          .card-no { 
-            font-size: 2rem; 
-            font-weight: 700; 
-            padding-bottom: 10%;
-            transition: color .2s;
-          }
-
-          .hero-header { 
-            font-size: 2.1rem; 
-            text-transform: uppercase;
-            padding-bottom: 12.5%;
-          }
-
-          .paragraph-light {
-            text-align: left;
-          }
-    
-          &:hover { .card-no { color: var(--primary-accent-color) } }
-
-        }
-
-      }
-
-      .active { 
-
-        border: 5px solid var(--primary-accent-color);
-        .card-no { color: var(--primary-accent-color); }
-        // .hero-card-wrapper { transform: translate(-.7rem, -.7rem); }
-
-      }
-
-    }
-
   }
 
+  .projects {
+    padding: 3em 5rem;
+    overflow-y: scroll;
+    height: 99%;
+    background: rgba(0, 0, 0, .2);
+    backdrop-filter: blur(10px);
+
+    .header {
+      color: white;
+      font-size: 3rem;
+      font-weight: 700;
+      padding-bottom: 1rem;
+      font-variant: small-caps;
+      text-transform: capitalize;
+    }
+
+    .project-card {
+      flex: 0 0 auto;
+      padding: 2rem;
+      margin: 1.5rem 0;
+      aspect-ratio: 2.4 / 1;
+      background: rgb(240, 240, 240);
+
+      display: grid;
+      grid-template-columns: 35% auto;
+
+      box-shadow: 
+        1px 1px black,
+        3px 3px white,
+        5px 5px var(--primary-accent-color);
+
+      .project-details { padding: 1.5rem; }
+
+      .project-image {
+        display: flex;
+        align-items: center;
+        img {  width: 100%;  aspect-ratio: 1 / 1; }
+      }
+
+      .project-title {
+        font-weight: 700;
+        font-size: 1.5rem;
+        text-transform: capitalize;
+      }
+
+      .project-date {
+        color: rgb(100, 100, 100);
+        padding: 1rem 0;
+
+        svg {
+         width: 1.25rem;
+         vertical-align: bottom;
+         fill: rgb(200, 200, 200);
+       }
+      }
+
+      .footer { 
+        display: flex; 
+
+        .view-more {
+          height: 3.5rem;
+          font-weight: 700;
+          aspect-ratio: 2.5 / 1;
+          text-transform: uppercase;
+          background: var(--primary-accent-color);
+        }
+
+        .bell {
+          height: 3.5rem;
+          aspect-ratio: 1 / 1;
+
+          background: white;
+          margin-left: 1rem;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          svg { height: 50%; fill: var(--primary-accent-color); }
+        }
+      }
+
+    }
+  }
+
+  .socials {
+    bottom: 0;
+    left: 2.5rem;
+    width: 1.25rem;
+    position: absolute;
+
+    display: flex;
+    flex-flow: column nowrap;
+
+    a { margin: 1rem 0; }
+    svg { width: 100%; fill: white; }
+  }
 }

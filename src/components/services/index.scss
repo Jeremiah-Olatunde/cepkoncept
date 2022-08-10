@@ -1,0 +1,169 @@
+.cepkoncept-services {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .section-header {
+    text-align: center;
+
+    .dash {
+      height: 50px;
+      margin-bottom: 1rem;
+      display: inline-block;
+      border: 1px solid #fdaf11;
+    }
+
+  }
+
+  .header-wrapper-bg {
+    background: #fff;
+    display: inline-block;
+    border: 1px solid black;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 60px;
+
+    .header-wrapper {
+      position: relative;
+      top: -4px;
+      left: -4px;
+      padding: 15px;
+      text-align: center;
+      background: #fff;
+      border: 1px solid black;
+  
+      .services-header {
+        font-size: 38px;
+        margin: 0;
+      }
+    }
+  }
+
+}
+
+.service-container {
+  border: 1px solid black;
+  display: flex;
+  width: calc(100% - 10rem);
+  max-width: 1600px;
+  margin: 0 auto 200px;
+  position: relative;
+
+  .service-text {
+    text-align: justify;
+    line-height: 30px;
+    color:rgba(0, 0, 0, 0.414);
+  }
+
+
+  .left-span {
+    font-weight: 700;
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    display: block;
+    text-align: right;
+    padding: 2rem;
+  }
+
+  .section-header { padding: 0 0 2rem 0; }
+  .main-header-bold { font-size: 2.45rem; text-align: center;}
+
+  .left-box-odd {
+    flex-basis: 50%;
+    border-left: 1px solid black;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    &:before {
+      content: '';
+      width: 76px;
+      height: 76px;
+      border-top: 4px solid black;
+      border-right: 4px solid black;
+    
+      position: absolute;
+      top: -4px;
+      right: -4px;
+    }
+  
+    &:after {
+      content: '';
+      width: 76px;
+      height: 76px;
+      border-right: 4px solid black;
+      border-bottom: 4px solid black;
+    
+      position: absolute;
+      top: calc(100% - 76px);
+      right: -4px;
+    }
+    
+  }
+
+  .left-box {
+    flex-basis: 50%;
+    border-right: 1px solid black;
+
+    display: flex;
+    align-items: center;
+
+    &:before {
+      content: '';
+      width: 76px;
+      height: 76px;
+      border-top: 4px solid black;
+      border-left: 4px solid black;
+    
+      position: absolute;
+      top: -4px;
+      left: -4px;
+    }
+  
+    &:after {
+      content: '';
+      width: 76px;
+      height: 76px;
+      border-left: 4px solid black;
+      border-bottom: 4px solid black;
+    
+      position: absolute;
+      top: calc(100% - 76px);
+      left: -4px;
+    }
+
+    .box-content {
+      padding: 6rem 4rem;
+
+      .right-span {
+        font-weight: 700;
+        font-size: 1.75rem;
+        text-transform: uppercase;
+        display: block;
+        text-align: right;
+        padding-top: 2rem;
+      }
+
+    }
+  }
+
+  .right-box {
+    flex-basis: 50%;
+    position: relative;
+
+    .image {
+      position: absolute;
+      left: calc(100% - 500px);
+      top: calc((100% - 500px)/2);
+      width: 500px;
+      aspect-ratio: 1 / 1;
+    }
+
+    .odd {
+      left: 0;
+    }
+  }
+  
+}

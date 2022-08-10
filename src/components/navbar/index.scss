@@ -3,10 +3,17 @@
 
   padding: 0 4vh;
   font-weight: 700;
+  border-bottom: 3px solid var(--primary-accent-color);
+
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  position: fixed;
+  background: white;
 
   .navbar-links {
 
-    height: 100px;
+    height: 75px;
     display: flex;
     align-items: center;
     justify-content: space-between;
