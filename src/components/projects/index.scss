@@ -1,115 +1,88 @@
 .cepkoncept-projects {
-  padding: 0 5rem;
+  margin: 10rem 0;
+  position: relative;
 
   .section-header {
-    padding: 5rem;
+    padding: 5rem 0;
+    position: relative;
     text-align: center;
 
-    .dash {
-      height: 50px;
-      margin-bottom: 1rem;
-      display: inline-block;
-      border: 1px solid #fdaf11;
+    .crown {
+      height: 5rem;
+      top: 0; left: 50%;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      border-left: .3rem solid var(--primary-accent-color);
     }
-
-    text-align: center;
   }
 
   .projects-slider {
-    width: 100%;
-    aspect-ratio: 8 / 3;
+    width: 85%;
+    margin: 0 auto;
+    aspect-ratio: 0.7;
 
     [data-wrapper] { height: 100%; }
 
-    .slide {
-
+    .project {
       height: 100%;
-      aspect-ratio: 1 / 1.5;
+      margin: 0 1rem;
+      background: black;
       position: relative;
+      aspect-ratio: 1 / 1.5;
 
       color: white;
-      text-transform: capitalize;
-      // background: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
 
-      img { 
-        z-index: 0;
-        width: calc(100% - 2rem);
-        height: calc(100% - 2rem);
-        position: absolute;
-        object-fit: cover;
-        opacity: .75;
-        transition: opacity .3s ease;
-      }
+      img { opacity: .6; transition: opacity .3s ease; }
 
       .description {
-
-        z-index: 1;
-        position: absolute;
+        bottom: 20%;
         max-width: 60%;
+        position: absolute;
         display: inline-block;
-        bottom: 12.5%; left: 7.5%;
+        bottom: 15.5%; left: 7.5%;
         transition: bottom .3s ease;
 
-        .name { 
-          font-weight: 600;
-          font-size: 2.75rem;
-          letter-spacing: 0.06rem;
-          line-height: 1.5;
-        }
+        .name { padding-bottom: 0; font-size: 3.25rem; }
 
-        .category { 
-          font-size: 1.5rem; 
-          letter-spacing: 0.03rem; 
-          padding-bottom: 1.2rem;
-        }
+        .category {  font-size: 1.1rem;  padding-bottom: 1.2rem; }
 
-        .view-project {
-
-          font-weight: 300;
-          font-size: 1.5rem;
-          letter-spacing: 0.03rem;
-
-          position: absolute;
-          display: inline-block;
-
-          padding-bottom: .75rem;
-
-          opacity: 0;
-          bottom: -60%;
-
-          transition: all .3s ease;
+        .btn {
+          opacity: 1;
+          bottom: -50%;
+          font-weight: 700;
+          padding: 1rem 1.25rem;
+          text-transform: uppercase;
           
-          &::before {
-            content: "";
-            width: 30%;
-            height: 100%;
-            position: absolute;
-            display: inline-block;
-            border-bottom: 2px solid darkgoldenrod;
-            transition: width .3s ease;
-          }
+          position: absolute;
 
-          &:hover::before { width: 100%; }
-
-          a { color: white }
-
-        }
-
-      }
-
-      &:hover {
-        img { opacity: .2; }
-        .description {
-          bottom: 14%;
-          .view-project { opacity: 1; bottom: -37%; }
+          border: .3rem solid var(--primary-accent-color);
         }
       }
-
     }
-
   }
 
+  .projects-pagination { padding: 3rem; font-size: 2rem; }
+
+  @media screen and (orientation: landscape) {
+    .section-header { padding: 5rem; }
+
+    .projects-slider {
+      width: 90%;
+      aspect-ratio: 8 / 3;
+
+      .project .description { bottom: 12.5%; }
+      .project .description .btn { opacity: 0; bottom: -60%; }
+
+      .project:hover {
+        img { opacity: .2; }
+
+        .description {
+          bottom: 20%;
+          .btn { opacity: 1; bottom: -50%; }
+        }       
+      }
+    }
+
+  .projects-pagination { font-size: 1.5rem; }
+  }
 }

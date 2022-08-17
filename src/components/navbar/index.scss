@@ -1,56 +1,72 @@
 
 .cepkoncept-navbar {
-
-  padding: 0 4vh;
+  width: 100vw;
+  color: white;
+  height: 7.5rem;
+  padding: 0 3vw;
   font-weight: 700;
-  border-bottom: 3px solid var(--primary-accent-color);
 
   top: 0;
   z-index: 1000;
-  width: 100%;
   position: fixed;
-  background: white;
 
-  .navbar-links {
+  display: flex;
+  justify-content: space-between;
 
-    height: 75px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  transition: all .3s;
+  border-bottom: transparent .3rem solid;
 
-    .navbar-link {
+  .logo, .navbar-link { line-height: 7.5rem; }
 
-      height: 100%;
-      font-size: 1.3rem;
-      padding: 0 5px;
-      text-transform: uppercase;
-
-      display: flex;
-      place-items: center;
-      
-    }
-
-    .logo {
-
-      flex-basis: 50%;
-      font-size: 3.0rem;
-      font-variant: small-caps; 
-      text-transform: capitalize;
-
-      a:first-letter { color: var(--primary-accent-color); }
-
-    }
-
-    .btn-type-1::before {
-      width: 0;
-      height: 20%;
-      background: rgba(0, 0, 0, .085);
-    }
-
-    .active::before { width: 40%; }
-
-    .btn-type-1:hover::before { width: 100%; }
-
+  .logo {
+    flex-basis: 50%;
+    font-size: 3.0rem;
+    font-variant: small-caps; 
+    text-transform: capitalize;
+    &:first-letter { color: var(--primary-accent-color); }
   }
 
+  .sidebar-btn svg {
+    fill: white;
+    height: 2.5rem;
+    margin-top: .5rem;
+    transition: fill .3s ease;
+    &:hover { fill: var(--primary-accent-color); }
+  } 
+
+  .navigation { display: none; }
+  .square-menu { display: none; }
+
+  @media screen and (orientation: landscape) {
+    .ellipsis-menu { display: none; }
+    .square-menu { display: inline-block; }
+
+    .navigation {
+      display: block;
+      flex-basis: 42.5%;
+
+      .list { display: flex; justify-content: space-between; }
+
+      .navbar-link { 
+        padding: 0 1rem; 
+        font-size: 1.3rem; 
+        text-transform: uppercase; 
+        transition: color .3s ease;
+        &:hover { color: var(--primary-accent-color); }
+      }
+
+      .active { color: var(--primary-accent-color); }
+    }
+  } 
+}
+
+.fixed {
+  color: black;
+  background: white;
+  border-bottom: .3rem solid var(--primary-accent-color);
+  box-shadow: 
+    0 .4rem .8rem 0 rgba(0, 0, 0, 0.2), 
+    0 .6rem 2.0rem 0 rgba(0, 0, 0, 0.19);   
+    
+  .sidebar-btn { svg { fill: black; } }
 }

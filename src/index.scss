@@ -2,22 +2,31 @@
 
 // FONTS
 @import url("./assets/fonts/Montserrat/Montserrat.css");
-@import url("./assets/fonts/BebasNeue/BebasNeue.css");
 
 // RESET AND GLOBAL STYLES
+@import url("./styles/reset.scss");
 @import url("./styles/reusables.scss");
 @import url("./styles/variables.scss");
-@import url("./styles/reset.scss");
-@import url("./styles/globals.css");
 
 
 // IMPORT ALL COMPONENT ROOT STYLES
 @import url("./**/index.scss");
 
 html { 
-  font-size: 62.5%;
   font-family: Montserrat; 
   scroll-behavior: smooth;
+  overflow-y: scroll;
 }
 
-body { padding-top: 78px; }
+@media screen and (orientation: landscape) {
+  html { font-size: 0.775vw; }
+}
+
+@media screen and (orientation: portrait) {
+  html { font-size: 1vh; }
+}
+
+@media screen and (orientation: portrait) and (min-aspect-ratio: calc(1 / 1.8)) {
+  html { font-size: 1.2vh; }
+}
+
