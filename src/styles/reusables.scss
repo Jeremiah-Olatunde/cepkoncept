@@ -23,6 +23,7 @@
     display: inline-block;
 
     transition: all .2s ease;
+    background: var(--primary-accent-color);
   }
 
   &:hover::before { width: 100% !important; }
@@ -33,7 +34,7 @@
 // ENCIRCLED ICONS
 // ----------------------------------------------------------------------------
 .encircled-icon {
-  margin: 0 1rem;
+  margin: 0 .7rem;
   aspect-ratio: 1 / 1;
 
   display: flex;
@@ -41,9 +42,15 @@
   justify-content: center;
 
   border-radius: 50%;
-  border: 2px solid var(--primary-accent-color);
+  transition: margin .1s ease;
+  border: .35rem solid var(--primary-accent-color);
 
   svg { width: 60%; transition: fill .3s; }
+  
+  &:hover { 
+    margin-bottom: 1rem;
+    svg { fill: var(--primary-accent-color) } 
+  }
 }
 // ----------------------------------------------------------------------------
 
@@ -68,33 +75,32 @@
 
 // SECTION HEADERS
 // ----------------------------------------------------------------------------
-.section-header {
-  padding: 5rem 0;
+.section-header { padding: 5rem 0; }
 
-  @mixin main-header {
-    font-size: 4rem;
-    padding-bottom: 1rem;
-    letter-spacing: .1rem;
-    text-transform: uppercase;
-  }
+.main-header {
+  font-size: 4rem;
+  padding-bottom: 1rem;
+  letter-spacing: .1rem;
+  font-variant: small-caps;
+  text-transform: capitalize;
+}
 
-  .main-header-bold { font-weight: 700; @include main-header; }
-  .main-header-light { font-weight: 300; @include main-header; }
+.main-header-bold { font-weight: 700; }
+.main-header-light { font-weight: 300; }
 
-  .sub-header {
-    font-weight: 600;
-    font-size: 1.4rem;
-    letter-spacing: .5rem;
-    text-transform: uppercase;
-    color: var(--primary-accent-color);
-  }
+.sub-header {
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: .5rem;
+  text-transform: uppercase;
+  color: var(--primary-accent-color);
 }
 // ----------------------------------------------------------------------------
 
 
 // PARAGRAPH STYLING
 // ----------------------------------------------------------------------------
-@mixin paragraph {
+.paragraph {
   line-height: 2;
   font-weight: 400;
   font-size: 1.5rem;
@@ -102,8 +108,8 @@
   letter-spacing: .2rem;
 }
 
-.paragraph-light {  color: #707070; @include paragraph; }
-.paragraph-dark {  color: #EBEBEB; @include paragraph; }
+.paragraph-light {  color: #707070; }
+.paragraph-dark {  color: #EBEBEB; }
 // ----------------------------------------------------------------------------
 
 
@@ -129,7 +135,9 @@
 
   font-size: 1.25rem;
 
-  .page { margin: 1rem; font-weight: 700; }
+
+  * { transition: all .3s ease-out; }
+  .page { margin: 1rem; font-weight: 700;}
   .active { font-size: 140%; color: var(--primary-accent-color); }
 }
 // ----------------------------------------------------------------------------

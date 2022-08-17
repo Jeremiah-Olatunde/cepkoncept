@@ -1,6 +1,6 @@
 .cepkoncept-hero {
-  height: calc(100vh - 78px);
-  padding-top: 60px;
+  height: 100vh;
+  padding-top: 13rem;
 
   background-image: 
     linear-gradient(rgba(0, 0, 0, .25), rgba(0, 0, 0, .25)),
@@ -10,31 +10,35 @@
   background-repeat: no-repeat;
 
   display: grid;
-  grid-template-columns: auto 35%;
+  grid-template-columns: auto;
 
-  .main {
+  box-shadow: 
+    0 .4rem .8rem 0 rgba(0, 0, 0, 0.2), 
+    0 .6rem 2.0rem 0 rgba(0, 0, 0, 0.19);    
+
+  .hero-header {
     color: white;
-    padding: 0 15rem;
+    padding: 0 4rem;
+    text-align: center;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-    .section-header {
-      padding: 0;
-      .main-header-bold { font-size: 7rem; padding: 0; margin-left: -.4rem;}
-      .sub-header{ padding-bottom: 1rem; }
-    }
+    .sub-header{ padding-bottom: 1rem; }
+    .main-header { font-size: 7rem; padding: 0; margin-left: -.4rem;}
 
-    .short-text { 
-      width: 70%; 
+    .hero-text { 
+      width: 100%; 
       font-size: 1.2rem; 
       padding: 2.5rem 0 4rem 0;
+      b { color: var(--primary-accent-color); text-transform: uppercase; }
     }
 
     .btn {
       color: black;
       width: 20rem;
-      padding: 2.75rem;
+      margin: 0 auto;
 
       font-weight: 800;
       font-size: 1.75rem;
@@ -44,97 +48,14 @@
         width: 100%; 
         background: var(--primary-accent-color); 
       }
+
+      .plus { height: 1.75rem; margin-right: 1rem; }
     }
   }
 
-  .projects {
-    padding: 3em 5rem;
-    overflow-y: scroll;
-    height: 99%;
-    background: rgba(0, 0, 0, .2);
-    backdrop-filter: blur(10px);
-
-    .header {
-      color: white;
-      font-size: 3rem;
-      font-weight: 700;
-      padding-bottom: 1rem;
-      font-variant: small-caps;
-      text-transform: capitalize;
-    }
-
-    .project-card {
-      flex: 0 0 auto;
-      padding: 2rem;
-      margin: 1.5rem 0;
-      aspect-ratio: 2.4 / 1;
-      background: rgb(240, 240, 240);
-
-      display: grid;
-      grid-template-columns: 35% auto;
-
-      box-shadow: 
-        1px 1px black,
-        3px 3px white,
-        5px 5px var(--primary-accent-color);
-
-      .project-details { padding: 1.5rem; }
-
-      .project-image {
-        display: flex;
-        align-items: center;
-        img {  width: 100%;  aspect-ratio: 1 / 1; }
-      }
-
-      .project-title {
-        font-weight: 700;
-        font-size: 1.5rem;
-        text-transform: capitalize;
-      }
-
-      .project-date {
-        color: rgb(100, 100, 100);
-        padding: 1rem 0;
-
-        svg {
-         width: 1.25rem;
-         vertical-align: bottom;
-         fill: rgb(200, 200, 200);
-       }
-      }
-
-      .footer { 
-        display: flex; 
-
-        .view-more {
-          height: 3.5rem;
-          font-weight: 700;
-          aspect-ratio: 2.5 / 1;
-          text-transform: uppercase;
-          background: var(--primary-accent-color);
-        }
-
-        .bell {
-          height: 3.5rem;
-          aspect-ratio: 1 / 1;
-
-          background: white;
-          margin-left: 1rem;
-
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
-          svg { height: 50%; fill: var(--primary-accent-color); }
-        }
-      }
-
-    }
-  }
-
-  .socials {
+  .hero-socials {
     bottom: 0;
-    left: 2.5rem;
+    left: 1.5rem;
     width: 1.25rem;
     position: absolute;
 
@@ -142,6 +63,114 @@
     flex-flow: column nowrap;
 
     a { margin: 1rem 0; }
-    svg { width: 100%; fill: white; }
+    svg { 
+      width: 100%; 
+      fill: white; 
+      transition: fill .2s ease;
+      &:hover { fill: var(--primary-accent-color); }
+    }
+  }      
+
+  .hero-projects { display: none; }
+
+  @media screen and (orientation: landscape) {
+    & {
+      grid-template-columns: auto 35%;
+    }
+    .mobile-br { display: none; }
+
+    .hero-header {
+      text-align: left;
+      padding: 0 14rem;
+
+      .btn { margin: 0; }
+      .hero-text { width: 75%; }
+    }
+
+    .hero-projects {
+      display: block;
+
+      height: 99%;
+      padding: 3em 5rem;
+      overflow-y: hidden;
+      background: rgba(0, 0, 0, .2);
+      backdrop-filter: blur(10px);
+
+      .header {
+        color: white;
+        font-size: 3rem;
+        font-weight: 700;
+        padding-bottom: 1rem;
+        font-variant: small-caps;
+        text-transform: capitalize;
+      }
+
+      .project-card {
+        flex: 0 0 auto;
+        padding: 2rem;
+        margin: 1.5rem 0;
+        aspect-ratio: 2.4;
+        background: rgb(240, 240, 240);
+
+        display: grid;
+        grid-template-columns: 35% auto;
+
+        box-shadow: 
+          1px 1px black,
+          3px 3px white,
+          5px 5px var(--primary-accent-color);
+
+        .details { padding: 1.5rem; }
+
+        .image {
+          display: flex;
+          align-items: center;
+          img {  width: 100%;  aspect-ratio: 1 / 1; }
+        }
+
+        .title {
+          font-weight: 700;
+          font-size: 1.5rem;
+          text-transform: capitalize;
+        }
+
+        .date {
+          color: rgb(100, 100, 100);
+          padding: 1rem 0;
+
+          svg {
+           width: 1.25rem;
+           vertical-align: bottom;
+           fill: rgb(200, 200, 200);
+         }
+        }
+
+        .footer { 
+          display: flex; 
+
+          .view-more {
+            height: 3.5rem;
+            font-weight: 700;
+            margin-right: 1rem;
+            aspect-ratio: 2.5 / 1;
+            text-transform: uppercase;
+            background: var(--primary-accent-color);
+          }
+
+          .bell {
+            height: 3.5rem;
+            background: white;
+            aspect-ratio: 1 / 1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            svg { height: 50%; fill: var(--primary-accent-color); }
+          }
+        }
+
+      }
+    } 
   }
 }

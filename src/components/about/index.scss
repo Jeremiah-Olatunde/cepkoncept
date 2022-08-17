@@ -1,139 +1,97 @@
 .cepkoncept-about {
-
-  margin: 25rem 4vh 0 4vh;
-  border: 1px solid black;
+  width: 95%;
   position: relative;
+  margin: 15rem auto 15rem;
 
-  display: flex;
+  border: .4rem solid black;
 
-  .section-dash {
-    top: -12.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    position: absolute;
-    border-bottom: 1px solid var(--primary-accent-color);
-    width: var(--length);
-  }
+  box-shadow: .1rem .1rem var(--primary-accent-color), .5rem .5rem black;
+
+  .image { display: none; }
 
   .content {
+    padding: 0 3rem;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    .crown {
+      height: 7.5rem;
+      top: 0; left: 50%;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      border-left: .3rem solid var(--primary-accent-color);
+    }
 
-    flex-basis: 65%;
-    position: relative;
-
-    .section-header { text-align: center; }
-
-    .paragraph-light { padding: 0 7rem; }
+    .about-header { text-align: center; }
 
     .about-footer {
-
       display: flex;
       justify-content: space-between;
-      padding: 4rem 7rem;
+      padding: 4rem 0;
 
-      .socials {
-
+      .about-socials {
         display: flex;
         align-items: center;
         justify-content: center;
 
+        .encircled-icon { width: 3.25rem; }
         & > :first-child  { margin-left: 0; }
-
-        .encircled-icon { width: 3rem; }
-
       }
 
       .btn {
-        padding: 0;
-        border: none;
-        background: none;
-        border: 2px solid var(--primary-accent-color);
-
         height: 5rem;
         aspect-ratio: 43 / 12;
+        border: .4rem solid var(--primary-accent-color);
 
-        font-size: 1.4rem;
         font-weight: 700;
+        font-size: 1.4rem;
         text-transform: capitalize;
-        position: relative;
         transition: color .3s ease-in-out;
 
-
-        &::before {
-          content: "";
-          height: 100%;
-          width: 0;
-          position: absolute;
-          left: 0; top: 0;
-          z-index: -1;
-          background: var(--primary-accent-color);
-          transition: width .3s ease-in-out;
-
-        }
-
-        &:hover {
-          color: white;
-          &::before { width: 100%; }
-        }
-
+        &:hover { color: white; &::before { width: 100%; } }
+        &::before { background: var(--primary-accent-color); }
       }
-
-    }
+    }  
   }
 
-  .image {
-    position: relative;
-    background: url("../../assets/images/lee.jpg");
-    background-size: cover;
-    flex-basis: 35%;
-
-    .border {
-      position: absolute;
-      height: 130%;
-      top: 50%;
-      transform: translateY(-50%);
-      border-right: 2px solid black;
+  @media screen and (orientation: landscape) {
+    & { 
+      width: 90%; 
+      display: flex;
+      aspect-ratio: 2.25;
+      box-shadow: inherit;
+      border: .3rem solid black;
     }
 
-    img {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      object-position: center center;
+    .content {
+      display: flex;
+      padding: 0;
+      flex-direction: column;
+      justify-content: center;
+
+      flex-basis: 65%;
+      position: relative;
+
+      .about-header { text-align: center; }
+      .about-text { padding: 0 7rem; }
+      .about-footer { padding: 4rem 7rem; }    
     }
 
+    .image {
+      display: block;
+      flex-basis: 35%;
+
+      background-size: cover;
+      background-position: center;
+      background-image: 
+        linear-gradient(rgba(0, 0, 0, .25), rgba(0, 0, 0, .25)),
+        url("../../assets/images/ashbell_apartments/(11).png");
+
+      .border {
+        top: 50%;
+        height: 130%;
+        position: absolute;
+        transform: translateY(-50%);
+        border-right: .3rem solid black;
+      }
+    }
   }
-
-  --length: 7.5rem;
-
-  .border-dash {
-    position: absolute;
-    border: 2px solid black;
-    background: black;
-  }
-
-  .horizontal { width: var(--length); height: 4px;}
-  .vertical { height: var(--length); width: 4px;}
-
-  .top { top: 0; transform: translate(-4px, -100%);}
-
-  .bottom { bottom: 0; transform: translate(-4px, 100%); }
-
-  .side-top { top: 0; transform: translate(-100%, -4px); }
-
-  .side-bottom { bottom: 0; transform: translate(-100%, 4px); }
-
-  .foobar-dash {
-    top: 0;
-    left: 50%;
-    width: 0px;
-    height: var(--length);
-    transform: translateY(-50%);
-    border: 1px solid var(--primary-accent-color);
-    background: var(--primary-accent-color);
-  }
-
 }

@@ -1,11 +1,10 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html:focus-within { scroll-behavior: auto; }
 
 
-body, h1, h2, h3, h4, h5, h6, p, 
-figure, blockquote, dl, dd, ul, li {
+body, h1, h2, h3, h4, h5, h6, p, button,
+figure, blockquote, dl, dd, ul, li, {
   margin: 0; padding: 0;
 }
 
