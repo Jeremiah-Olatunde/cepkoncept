@@ -5,7 +5,7 @@ import "./**/index.ts";
 
 import { Slider } from "~/src/scripts/slider";
 
-const portrait: boolean = true; // document.documentElement.clientWidth < document.documentElement.clientHeight;
+const portrait: boolean = document.documentElement.clientWidth < document.documentElement.clientHeight;
 
 const slider = new Slider("projects-slider", {
   focusPosition: portrait ? "center" : "start",
