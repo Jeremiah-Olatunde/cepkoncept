@@ -15,14 +15,14 @@
 
   .service {
     width: 75%;
-    margin: 10rem auto;
+    margin: 5rem auto;
     aspect-ratio: 1 / 2;
     border: .3rem solid black;
 
     display: flex;
     flex-flow: column nowrap;
 
-    .border { border: .1rem solid black; flex-basis: .2rem;}
+    .border { border: .1rem solid black; flex-basis: .2rem; background: black;}
 
     .content {
       padding: 2rem;
@@ -76,6 +76,7 @@
   @media screen and (orientation: landscape) {
     .service {
       width: 90%;
+      margin: 10rem auto;
       aspect-ratio: 3.25;
       flex-flow: row nowrap;
 

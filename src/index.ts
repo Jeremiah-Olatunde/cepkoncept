@@ -19,7 +19,7 @@ const observer = new IntersectionObserver(entries => {
     links.forEach(link => link.classList.remove("active"));
     link.classList.add("active");
   })
-}, { threshold: .75 });
+}, { threshold: .2 });
 
 sections.forEach(section => observer.observe(section));
 
