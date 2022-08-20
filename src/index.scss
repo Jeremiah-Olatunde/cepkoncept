@@ -14,8 +14,7 @@
 
 html { 
   font-family: Montserrat; 
-  scroll-behavior: smooth;
-  overflow-y: scroll;
+  scroll-behavior: auto;
 }
 
 @media screen and (orientation: landscape) {
