@@ -32,7 +32,7 @@
       & > :first-child  { margin-left: 0; }
     }
 
-    .header { font-size: 5rem; text-transform: uppercase; text-align: center;}
+    .header { font-size: 4rem; text-transform: uppercase; text-align: center;}
 
     .btn {
       height: 6rem;
@@ -61,7 +61,7 @@
       text-align: center;
 
       .location {
-        font-size: 3rem;
+        font-size: 2.5rem;
         font-variant: initial;
         text-transform: capitalize;
       }
@@ -77,5 +77,6 @@
   @media screen and (orientation: landscape) {
     .section-0 { flex-flow: row; }
     .section-0 .btn { margin: 2rem 0; }
+    .section-0 .header { font-size: 5rem; }
   }
 }

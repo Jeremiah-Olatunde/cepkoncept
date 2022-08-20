@@ -26,7 +26,7 @@
     justify-content: center;
 
     .sub-header{ padding-bottom: 1rem; }
-    .main-header { font-size: 7rem; padding: 0; margin-left: -.4rem;}
+    .main-header { font-size: 6rem; padding: 0; margin-left: -.4rem;}
 
     .hero-text { 
       width: 100%; 
@@ -85,6 +85,7 @@
 
       .btn { margin: 0; }
       .hero-text { width: 75%; }
+      .main-header { font-size: 7rem; }
     }
 
     .hero-projects {

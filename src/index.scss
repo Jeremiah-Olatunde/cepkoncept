@@ -22,10 +22,6 @@ html {
 }
 
 @media screen and (orientation: portrait) {
-  html { font-size: 1vh; }
-}
-
-@media screen and (orientation: portrait) and (min-aspect-ratio: calc(1 / 1.8)) {
   html { font-size: 1.2vh; }
 }
 

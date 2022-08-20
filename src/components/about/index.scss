@@ -24,6 +24,7 @@
 
     .about-footer {
       display: flex;
+      flex-direction: column-reverse;
       justify-content: space-between;
       padding: 4rem 0;
 
@@ -38,6 +39,7 @@
 
       .btn {
         height: 5rem;
+        margin-bottom: 3rem;
         aspect-ratio: 43 / 12;
         border: .4rem solid var(--primary-accent-color);
 
@@ -72,7 +74,11 @@
 
       .about-header { text-align: center; }
       .about-text { padding: 0 7rem; }
-      .about-footer { padding: 4rem 7rem; }    
+      .about-footer { 
+        margin-bottom: 0;
+        padding: 4rem 7rem; 
+        flex-direction: row;
+      }    
     }
 
     .image {

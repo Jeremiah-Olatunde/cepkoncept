@@ -1,5 +1,5 @@
 .cepkoncept-projects {
-  margin: 10rem 0;
+  margin: 5rem 0;
   position: relative;
 
   .section-header {
@@ -64,6 +64,8 @@
   .projects-pagination { padding: 3rem; font-size: 2rem; }
 
   @media screen and (orientation: landscape) {
+    & { margin: 10rem 0; }
+
     .section-header { padding: 5rem; }
 
     .projects-slider {
