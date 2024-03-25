@@ -2,10 +2,19 @@
 ###### Code base for the website of Cepkoncept LTD
 
 ### Screenshots
+#### Hero Section
 ![hero](https://github.com/Jeremiah-Olatunde/cepkoncept/blob/testing/screenshots/hero.png)
+
+#### About Section
 ![about](https://github.com/Jeremiah-Olatunde/cepkoncept/blob/testing/screenshots/about.png)
+
+#### Team Section
 ![team](https://github.com/Jeremiah-Olatunde/cepkoncept/blob/testing/screenshots/team.png)
+
+#### Services Section
 ![services](https://github.com/Jeremiah-Olatunde/cepkoncept/blob/testing/screenshots/services.png)
+
+#### Projects Section
 ![projects](https://github.com/Jeremiah-Olatunde/cepkoncept/blob/testing/screenshots/projects.png)
 
 ### Technology Stack
