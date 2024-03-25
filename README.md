@@ -1,6 +1,13 @@
 # CEPKONCEPT
 ###### Code base for the website of Cepkoncept LTD
 
+### Screenshots
+![hero](https://github.com/Jeremiah-Olatunde/cepkoncept/blob/testing/screenshots/hero.png)
+![about](https://github.com/Jeremiah-Olatunde/cepkoncept/blob/testing/screenshots/about.png)
+![team](https://github.com/Jeremiah-Olatunde/cepkoncept/blob/testing/screenshots/team.png)
+![services](https://github.com/Jeremiah-Olatunde/cepkoncept/blob/testing/screenshots/services.png)
+![projects](https://github.com/Jeremiah-Olatunde/cepkoncept/blob/testing/screenshots/projects.png)
+
 ### Technology Stack
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) 
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
